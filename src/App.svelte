@@ -1,30 +1,33 @@
 <script>
-	export let name;
+  export let url;
+
+  async function paint() {
+    const wasm = await import(
+      "/pkg/shinyaic_wasm.js"
+    );
+
+	const mod = await wasm.default();
+
+	mod.greet()
+  }
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+  <div>
+    <input bind:value={url} />
+    <button on:click={paint}>paint</button>
+  </div>
+  <canvas id="canvas" width="900" height="700" />
 </main>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
+  main {
+    text-align: center;
+    padding: 1em;
+    margin: 0 auto;
+  }
+  #canvas {
+    border: 1px solid black;
+    border-radius: 6px;
+  }
 </style>
