@@ -18,6 +18,9 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
+    "@vercel/fetch": "^6.1.1",
+    "@vercel/node": "^1.12.1",
+    "node-fetch": "2.6.5",
     "sirv-cli": "^1.0.0"
   }
 }
