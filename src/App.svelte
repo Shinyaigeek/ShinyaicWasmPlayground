@@ -1,7 +1,7 @@
 <script>
   export let url;
 
-  import init, * as wam from "./pkg/shinyaic_wasm";
+  import init, * as wam from "../public/pkg/shinyaic_wasm";
 
   async function paint() {
     const run = async () => {
@@ -9,7 +9,7 @@
       window.wam = wam;
     };
 
-	await run();
+    await run();
 
     const html = await (async () => {
       if (url && url.length > 0) {
@@ -49,9 +49,6 @@
     </html>`;
       }
     })();
-
-    console.log(html);
-	console.log(wam)
 
     wam.browser(html);
   }
